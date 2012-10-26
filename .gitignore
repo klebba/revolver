@@ -1,0 +1,8 @@
+# OSX cruft
+._*
+
+# icon caches
+.DS_Store
+ehthumbs.db
+Icon
+Thumbs.db

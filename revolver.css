@@ -1,0 +1,126 @@
+/* the main container */
+.rev {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	/* fills container, or specify a width */
+	/* specify a height */
+}
+
+/* allow borders and padding without breaking measurements */
+.rev,
+.rev .rev-container,
+.rev .rev-item {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* clearfix */
+.rev:after {
+	content: '\0020';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* the mask class is applied after init */
+.rev.rev-mask {
+
+}
+
+/* the touch class is applied if the carousel is touch activated */
+.rev.rev-touch,
+.rev.rev-touch * {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.rev.rev-enabled {
+
+}
+
+/* the item container, assumed to be a UL */
+.rev .rev-container {
+	position: relative;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/* specify a width */
+	height: 100%;
+}
+
+/* each item, assumed to be a LI */
+.rev .rev-item {
+	overflow: hidden;
+	display: block;
+	float: left;
+	/* specify a width */
+	height: 100%;
+}
+
+/* controls skin */
+.rev .rev-previous,
+.rev .rev-next {
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	width: 44px;
+	height: 44px;
+	margin: -22px 0 0 0; /* pull up to vcenter */
+	padding: 0;
+	border: 0;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: #fff;
+}
+
+.rev .rev-previous {
+	left: 0;
+	margin-left: 8px;
+}
+
+.rev .rev-next {
+	right: 0;
+	margin-right: 8px;
+}
+
+.rev .rev-next[disabled],
+.rev .rev-previous[disabled] {
+	cursor: default;
+	opacity: .5;
+	color: #999;
+}
+
+.rev .rev-previous:after,
+.rev .rev-next:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	font-size: 24px;
+	line-height: 44px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #666;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+.rev .rev-previous:after {
+	content: '\2329';
+	text-indent: -17px;
+}
+
+.rev .rev-next:after {
+	content: '\232A';
+	text-indent: 17px;
+}

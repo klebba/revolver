@@ -1,0 +1,96 @@
+
+html {
+	
+}
+
+body {
+	margin: 0;
+	background-color: #eee;
+}
+
+#page {
+	min-width: 640px;
+	max-width: 960px;
+	margin: 3em auto;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 1em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.rev {
+	font-size: 120px;
+}
+
+.rev .rev-item {
+	padding: 20px;
+	background-color: #ccc;
+	border: 1px solid #888;
+}
+
+.rev .rev-item img {
+	width: 100%;
+	height: 100%;
+}
+
+/* fluid */
+.rev-fluid-demo {
+	height: 400px;
+}
+
+.rev-fluid-demo .rev-container {
+	width: 500%; /* recalculated internally */
+}
+
+.rev-fluid-demo .rev-item {
+	width: 20%; /* recalculated internally */
+}
+
+/* fixed */
+.rev-fixed-demo {
+	height: 150px;
+	margin: 32px 0 0 0;
+}
+
+.rev-fixed-demo .rev-container {
+	width: 3000px; /* recalculated internally */
+}
+
+.rev-fixed-demo .rev-item {
+	width: 300px; /* recalculated internally */
+}
+
+/* item coloring - use data-index instead of nth-child because of internal item cloning */
+.rev-container > [data-index] {
+	border: 0;
+	text-align: center;
+	line-height: 110px;
+}
+
+.rev-container > [data-index="0"],
+.rev-container > [data-index="5"] {
+	background-color: #839492;
+}
+
+.rev-container > [data-index="1"],
+.rev-container > [data-index="6"] {
+	background-color: #454A41;
+}
+
+.rev-container > [data-index="2"],
+.rev-container > [data-index="7"] {
+	background-color: #FF7054;
+}
+
+.rev-container > [data-index="3"],
+.rev-container > [data-index="8"] {
+	background-color: #8A0016;
+}
+
+.rev-container > [data-index="4"],
+.rev-container > [data-index="9"] {
+	background-color: #E3AA57;
+}
