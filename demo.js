@@ -13,12 +13,11 @@ $(function() {
             },
             automatic: {
                 enabled: true,
-                pause: 250//,
+                pause: 2500//,
                 //hitArea: ['200px','20px','50px','50px']
                 //hitArea: ['20%','20%','50%','50%']
             },
-            wraparound: true,
-            //infinite: true,
+            infinite: true,
             callbacks: {
                 ready: function(state) {},
                 beforeMove: function(state) {},
@@ -36,8 +35,9 @@ $(function() {
 
         var r = new Revolver($(this), {
             mode: 'fixed',
-            //infinite: true,
-            startAtItem: $(this).index() - 1 
+            infinite: true,
+            startAtItem: $(this).index() - 1,
+            debug: true
         });
 
         fixed.push(r);

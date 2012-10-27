@@ -226,7 +226,8 @@ Revolver.prototype = {
     // holds indexes, measurements, etc
     setupState: function() {
         
-        var options = this.options;
+        var options = this.options,
+            startAtItemIndex;
         
         // add initial properties to the state
         this.state = {};
@@ -247,8 +248,10 @@ Revolver.prototype = {
             this.disable();
         } else {
             
+            startAtItemIndex = options.startAtItem + this.state.startItemIndex;
+
             // set the initial item index
-            this.state.currentItemIndex = this.forceValidItemIndex(options.startAtItem);
+            this.state.currentItemIndex = this.forceValidItemIndex(startAtItemIndex);
             
             this.enable();
             
