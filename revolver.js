@@ -60,7 +60,7 @@ var Revolver = function(element, options) {
     
     // recursive merge
     this.options = $.extend(true, {}, defaults, options || {});
-    
+
     // force wraparound for infinite carousels
     if(this.options.infinite) {
         this.options.wraparound = true;
