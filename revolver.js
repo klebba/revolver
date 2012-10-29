@@ -9,17 +9,17 @@
 
     var Revolver = function(element, options) {
 
-        var Modernizr = typeof Modernizr === 'undefined' ? false : Modernizr;
+        var m = window.hasOwnProperty('Modernizr') ? window.Modernizr : false;
         
         // default options
         var defaults = {
             speed               : 1250,
             easing              : 'swing',
             mode                : 'fluid',            // fluid or fixed
-            touch               : Modernizr && Modernizr.touch,
-            transforms          : Modernizr && Modernizr.csstransforms,
-            transform3d         : Modernizr && Modernizr.csstransforms3d,
-            transitions         : Modernizr && Modernizr.csstransitions,
+            touch               : m && m.touch,
+            transforms          : m && m.csstransforms,
+            transform3d         : m && m.csstransforms3d,
+            transitions         : m && m.csstransitions,
             wraparound          : false,              // loop
             infinite            : false,              // seamless loop
             autoFocus           : false,              // item clicks cause focus
@@ -1153,7 +1153,12 @@
 
         convertPositionToPercentage: function(position) {
             
-            return (position / this.state.containerSize) * 100;
+            // handle non-transformational positioning
+            if(this.options.transforms === false) {
+                return (position / this.state.maskSize) * 100;
+            } else {
+                return (position / this.state.containerSize) * 100;
+            }
         },
         
         // all repositioning routes through here
