@@ -1,5 +1,7 @@
 $(function() {
     
+    "use strict";
+
     var fluidEl = $('.rev-fluid-demo'),
         fixedEl = $('.rev-fixed-demo'),
         fluid   = [],
@@ -17,7 +19,7 @@ $(function() {
                 //hitArea: ['200px','20px','50px','50px']
                 //hitArea: ['20%','20%','50%','50%']
             },
-            infinite: true,
+            //infinite: true,
             callbacks: {
                 ready: function(state) {},
                 beforeMove: function(state) {},
@@ -35,7 +37,7 @@ $(function() {
 
         var r = new Revolver($(this), {
             mode: 'fixed',
-            infinite: true,
+            //infinite: true,
             startAtItem: $(this).index() - 1,
             debug: true
         });

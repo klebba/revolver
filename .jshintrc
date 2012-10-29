@@ -1,0 +1,6 @@
+{
+    "browser"  : true,
+    "jquery"   : true,
+    "laxbreak" : true,
+    "trailing" : true
+}
