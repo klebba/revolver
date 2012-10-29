@@ -2,7 +2,7 @@
 
 ```
 {
-speed               : 1250,
+speed               : 1250,               // 
 easing              : 'swing',
 mode                : 'fluid',            // fluid or fixed
 touch               : m && m.touch,
@@ -13,7 +13,7 @@ wraparound          : false,              // loop
 infinite            : false,              // seamless loop
 autoFocus           : false,              // item clicks cause focus
 lazyLoad            : true,               // data-src --> src
-startAtItem         : 0,                  // zero indexed
+startAtItem         : 0,                  // for deep linking (zero indexed)
 automatic : {
     enabled         : false,
     hitArea         : false, // TODO %    // optional, ['x1','y1','x2','y2'] eg '100px' or '50%'
