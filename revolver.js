@@ -1709,7 +1709,7 @@
         }
     };
 
-    // window or current scope
-    this.Revolver = Revolver;
+    // window or current scope, use string for closure
+    this['Revolver'] = Revolver;
 
 }).call(this);
