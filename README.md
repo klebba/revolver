@@ -62,7 +62,7 @@ jshint revolver.js --config .jshintrc
 
 ```
 // ==ClosureCompiler==
-// @compilation_level ADVANCED_OPTIMIZATIONS
+// @compilation_level SIMPLE_OPTIMIZATIONS
 // @output_file_name revolver.min.js
 // @code_url https://raw.github.com/klebba/revolver/master/revolver.js
 // ==/ClosureCompiler==
