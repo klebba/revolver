@@ -57,3 +57,12 @@ debug               : false
 npm install -g jshint
 
 jshint revolver.js --config .jshintrc
+
+
+```
+// ==ClosureCompiler==
+// @compilation_level ADVANCED_OPTIMIZATIONS
+// @output_file_name revolver.min.js
+// @code_url https://github.com/klebba/revolver/blob/master/revolver.js
+// ==/ClosureCompiler==
+```
