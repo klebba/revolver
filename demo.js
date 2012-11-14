@@ -15,8 +15,8 @@ $(function() {
                 key: true
             },
             automatic: {
-//                enabled: true,
-                pause: 2500//,
+                enabled: true,
+                pause: 500//,
                 //hitArea: ['200px','20px','50px','50px']
                 //hitArea: ['20%','20%','50%','50%']
             },

@@ -468,12 +468,12 @@
 
                 // default forward
                 if(dir === 'backward') {
-                    self.previous();
+                    self.previousInternal();
                 } else {
-                    self.next();
+                    self.nextInternal();
                 }
                 
-                self.dispatchEvent('userNext', options.callbacks.cycle);
+                self.dispatchEvent('cycle', options.callbacks.cycle);
 
             }, wait);
 
@@ -497,13 +497,17 @@
             var self    = this,
                 options = this.options,
                 wait    = options.speed + options.automatic.pause;
+            
+            if(!options.automatic.enabled) {
+                return;
+            }
 
             this.killCycle();
             
             this.resetTimeout = setTimeout(function() {
 
                 self.startCycle();
-
+                
             }, wait);
         },
 
@@ -1460,10 +1464,10 @@
                     : maxBounds)
                 : currentItemIndex + dir;
         },
-        
+
         // changes the internal page index, the updates the state
-        toItem: function(itemOrIndex, time) {
-            
+        toItemInternal: function(itemOrIndex, time) {
+
             var state = this.state,
                 items = this.items,
                 index,
@@ -1482,9 +1486,9 @@
                 this.syncPosition(time);
             }
         },
-        
+
         // validate the page index, then route through toItem
-        toPage: function(index, time) {
+        toPageInternal: function(index, time) {
             
             var state            = this.state,
                 pages            = state.pages,
@@ -1499,10 +1503,48 @@
             
             // did the index change?
             if(itemIndex !== currentItemIndex) {
-                this.toItem(itemIndex, time);
+                this.toItemInternal(itemIndex, time);
             }
         },
-        
+
+        nextInternal: function() {
+            
+            if(this.isFluid()) {
+                this.toNextItemInternal();
+            } else {
+                this.toNextPageInternal();
+            }
+        },
+
+        previousInternal: function() {
+
+            if(this.isFluid()) {
+                this.toPreviousItemInternal();
+            } else {
+                this.toPreviousPageInternal();
+            }
+        },
+
+        toNextItemInternal: function() {
+
+            this.toItemInternal(this.getNextItemIndex());
+        },
+
+        toPreviousItemInternal: function() {
+
+            this.toItemInternal(this.getPreviousItemIndex());
+        },
+
+        toNextPageInternal: function() {
+
+            this.toPageInternal(this.getNextPageIndex());
+        },
+
+        toPreviousPageInternal: function() {
+
+            this.toPageInternal(this.getPreviousPageIndex());
+        },
+
         // calculate the next index using the current index and the number of items per page
         getNextPageIndex: function() {
             
@@ -1579,44 +1621,58 @@
             return this.state.cycling;
         },
         
+        /**
+         * Public API
+         */
+
         next: function() {
             
-            if(this.isFluid()) {
-                this.toNextItem();
-            } else {
-                this.toNextPage();
-            }
+            this.resetCycle();
+            this.nextInternal();
         },
         
         previous: function() {
             
-            if(this.isFluid()) {
-                this.toPreviousItem();
-            } else {
-                this.toPreviousPage();
-            }
+            this.resetCycle();
+            this.previousInternal();  
+        },
+
+        toItem: function(itemOrIndex, time) {
+            
+            this.resetCycle();
+            this.toItemInternal(itemOrIndex, time);
+        },
+        
+        toPage: function(index, time) {
+            
+            this.resetCycle();
+            this.toPageInternal(index, time);
         },
         
         //fluid mode: one item per page
         toNextItem: function() {
             
-            this.toItem(this.getNextItemIndex());
+            this.resetCycle();
+            this.toNextItemInternal();
         },
         
         toPreviousItem: function() {
             
-            this.toItem(this.getPreviousItemIndex());
+            this.resetCycle();
+            this.toPreviousItemInternal();
         },
         
         // fixed mode: calculated pages
         toNextPage: function() {
             
-            this.toPage(this.getNextPageIndex());
+            this.resetCycle();
+            this.toNextPageInternal();
         },
         
         toPreviousPage: function() {
-            
-            this.toPage(this.getPreviousPageIndex());
+
+            this.resetCycle();
+            this.toPreviousPageInternal();
         },
         
         // add new items and re-measure the carousel
