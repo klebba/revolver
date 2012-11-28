@@ -10,7 +10,7 @@ transforms          : m && m.csstransforms,
 transform3d         : m && m.csstransforms3d,
 transitions         : m && m.csstransitions,
 wraparound          : false,              // loop
-infinite            : false,              // seamless loop
+infinite            : false,              // seamless loop, experimental
 autoFocus           : false,              // item clicks cause focus
 lazyLoad            : true,               // data-src --> src
 startAtItem         : 0,                  // for deep linking (zero indexed)
