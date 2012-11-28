@@ -13,10 +13,8 @@ $(function() {
             controls: {
                 key: true
             },
-            automatic: {
-                enabled: true,
-                pause: 500
-            }
+            wraparound: true,
+            infinite: true
         });
 
         fluid.push(r);

@@ -22,13 +22,11 @@ body {
 }
 
 .rev {
-	font-size: 120px;
+	
 }
 
 .rev .rev-item {
-	padding: 20px;
 	background-color: #ccc;
-	border: 1px solid #888;
 }
 
 .rev .rev-item img {
@@ -39,20 +37,44 @@ body {
 /* fluid */
 .rev-fluid-demo {
 	height: 400px;
+	font-size: 48px;
 }
 
 .rev-fluid-demo .rev-container {
 	width: 500%; /* recalculated internally */
+	counter-reset: num 0;
 }
 
 .rev-fluid-demo .rev-item {
 	width: 20%; /* recalculated internally */
+	position: relative;
+	padding: 0 80px;
+	border: 1px solid #888;
+}
+
+.rev-fluid-demo .rev-item:not(.rev-clone):before {
+	content: counter(num);
+	counter-increment: num 1;
+	position: absolute;
+	bottom: 1em;
+	left: 50%;
+	margin: 0 0 0 -1em;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
 }
 
 /* fixed */
 .rev-fixed-demo {
 	height: 150px;
 	margin: 32px 0 0 0;
+	font-size: 120px;
 }
 
 .rev-fixed-demo .rev-container {
@@ -61,11 +83,11 @@ body {
 
 .rev-fixed-demo .rev-item {
 	width: 300px; /* recalculated internally */
+	padding: 20px;
 }
 
 /* item coloring - use data-index instead of nth-child because of internal item cloning */
 .rev-container > [data-index] {
-	border: 0;
 	text-align: center;
 	line-height: 110px;
 }
